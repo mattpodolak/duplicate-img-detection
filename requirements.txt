@@ -1,0 +1,6 @@
+python-multipart
+fastapi
+uvicorn[standard]
+numpy
+faiss-cpu
+pytorch
