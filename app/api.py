@@ -16,7 +16,7 @@ app = FastAPI(
 Upload a single image to the duplicate image database
 """
 @app.post("/api/add/image", status_code=201, response_model=AddResponse)
-async def create_upload_file(file: UploadFile = File(...), hash_size:Optional[int] = Form(16), 
+async def add_image(file: UploadFile = File(...), hash_size:Optional[int] = Form(16), 
     index_name:Optional[str] = Form('faiss_index')):
 
     # load index
@@ -36,7 +36,7 @@ async def create_upload_file(file: UploadFile = File(...), hash_size:Optional[in
 Upload multiple images to the duplicate image database
 """
 @app.post("/api/add/images", status_code=201, response_model=AddResponse)
-async def create_upload_files(files: List[UploadFile] = File(...), 
+async def add_images(files: List[UploadFile] = File(...), 
     hash_size:Optional[int] = Form(16), index_name:Optional[str] = Form('faiss_index')):
 
     # load index
@@ -58,7 +58,7 @@ async def create_upload_files(files: List[UploadFile] = File(...),
 Check an image against the duplicate image database
 """
 @app.post("/api/check")
-async def create_upload_files(dist:int = Form(...), file: UploadFile = File(...), 
+async def check_image(dist:int = Form(...), file: UploadFile = File(...), 
     hash_size:Optional[int] = Form(16), index_name:Optional[str] = Form('faiss_index')):
 
     # load index
